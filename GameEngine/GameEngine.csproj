@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{752A6D26-7281-47D1-8A54-5250E97BBE9A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ShinInternMusou</RootNamespace>
-    <AssemblyName>ShinInternMusou</AssemblyName>
+    <ProjectGuid>{69A61057-6675-47EB-8F0F-4827DEAD50A9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameEngine</RootNamespace>
+    <AssemblyName>GameEngine</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,23 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="CharacterFactory.cs" />
+    <Compile Include="Role\Character.cs" />
+    <Compile Include="Role\Enemy.cs" />
+    <Compile Include="Role\IHero.cs" />
+    <Compile Include="Role\Novice.cs" />
+    <Compile Include="Role\Priest.cs" />
+    <Compile Include="Role\Warrior.cs" />
+    <Compile Include="Enum\CombatAction.cs" />
+    <Compile Include="Enum\HeroClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="State\BattleState.cs" />
-    <Compile Include="State\ChooseJobState.cs" />
-    <Compile Include="State\EndGameState.cs" />
-    <Compile Include="State\PlayerState.cs" />
-    <Compile Include="State\StartState.cs" />
-    <Compile Include="UserInterface.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GameEngine\GameEngine.csproj">
-      <Project>{69a61057-6675-47eb-8f0f-4827dead50a9}</Project>
-      <Name>GameEngine</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

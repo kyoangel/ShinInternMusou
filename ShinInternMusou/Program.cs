@@ -1,15 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ShinInternMusou.State;
 
 namespace ShinInternMusou
 {
-	class Program
+	internal class Program
 	{
-		static void Main(string[] args)
+		private static void Main(string[] args)
 		{
+			var ui = new UserInterface();
+
+			while (!(ui.GetState() is EndGameState))
+			{
+				ui.InterAct();
+			}
+
+			ui.InterAct();
+
+			Console.ReadLine();
 		}
 	}
 }
