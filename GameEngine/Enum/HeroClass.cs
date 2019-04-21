@@ -2,8 +2,8 @@
 {
 	public enum HeroClass
 	{
-		Novice,
-		Warrior,
-		Priest
+		Novice = 1,
+		Warrior = 11,
+		Priest = 12
 	}
 }

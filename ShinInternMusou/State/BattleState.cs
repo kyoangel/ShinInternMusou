@@ -20,6 +20,7 @@ namespace ShinInternMusou.State
 			{
 				case CombatAction.Run:
 					ui.PromptMessage("You Lose!");
+					ui.State =  new EndGameState();
 					break;
 
 				case CombatAction.Attack:
