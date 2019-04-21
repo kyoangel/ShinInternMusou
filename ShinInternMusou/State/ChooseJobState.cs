@@ -1,7 +1,6 @@
-﻿using System;
-using GameEngine;
+﻿using GameEngine;
 using GameEngine.Enum;
-using GameEngine.Role;
+using System;
 
 namespace ShinInternMusou.State
 {
@@ -9,23 +8,25 @@ namespace ShinInternMusou.State
 	{
 		public override void InterAct(UserInterface ui)
 		{
-			Character character = null;
-			while (character == null)
+			ui.PromptMessage("Type [Novice], [Warrior], or [Priest] to create you character");
+			var classChoose = ui.ReceiveMessage();
+
+			if (classChoose.Equals("Rename", StringComparison.OrdinalIgnoreCase))
 			{
-				ui.PromptMessage("type [Novice], [Warrior], or [Priest] to create you character");
-				var classChoose = ui.ReceiveMessage();
-				Enum.TryParse(classChoose, true, out HeroClass heroClass);
-				try
-				{
-					character = CharacterFactory.CreateCharacter(ui.HeroName, heroClass);
-				}
-				catch (ArgumentOutOfRangeException e)
-				{
-					Console.WriteLine("the job you type is not valid");
-				}
+				ui.State = new StartState();
+				return;
 			}
 
-			ui.Hero = character;
+			Enum.TryParse(classChoose, true, out HeroClass heroClass);
+			try
+			{
+				ui.Hero = CharacterFactory.CreateCharacter(ui.HeroName, heroClass);
+			}
+			catch (ArgumentOutOfRangeException e)
+			{
+				Console.WriteLine("The job you type is not valid");
+				return;
+			}
 
 			ui.State = new BattleState();
 		}

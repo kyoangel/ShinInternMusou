@@ -11,7 +11,7 @@ namespace ShinInternMusou.State
 		{
 			ui.PromptMessage($"Hi {ui.Hero.Job} {ui.Hero.Name}, there is a goblin");
 			ui.PromptMessage("Please defeat him");
-			ui.PromptMessage("");
+			Console.WriteLine();
 
 			ui.Enemy = CharacterFactory.CreateEnemy("Goblin");
 			while (ui.Hero.HitPoint > 0 && ui.Enemy.HitPoint > 0)
@@ -46,7 +46,7 @@ namespace ShinInternMusou.State
 					default:
 
 						ui.PromptMessage("Your Action is not valid.");
-						ui.PromptMessage("type [Attack], [Skill] to fight, type [Run] for retreat");
+						ui.PromptMessage("Type [Attack], [Skill] to fight, type [Run] for retreat");
 						break;
 				}
 
