@@ -4,7 +4,7 @@ namespace GameEngine.Role
 {
 	public class Priest : Character, IHero
 	{
-		public Priest(string name) : base(name, 25, 6)
+		public Priest(string name, int hp, int ap) : base(name, hp, ap)
 		{
 		}
 

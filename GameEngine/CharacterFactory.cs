@@ -12,15 +12,15 @@ namespace GameEngine
 			switch (heroClass)
 			{
 				case HeroClass.Novice:
-					character = new Novice(heroName);
+					character = new Novice(heroName, 20, 3);
 					break;
 
 				case HeroClass.Warrior:
-					character = new Warrior(heroName);
+					character = new Warrior(heroName, 30, 5);
 					break;
 
 				case HeroClass.Priest:
-					character = new Priest(heroName);
+					character = new Priest(heroName, 25, 3);
 					break;
 
 				default:

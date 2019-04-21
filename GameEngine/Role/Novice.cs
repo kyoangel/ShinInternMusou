@@ -4,7 +4,7 @@ namespace GameEngine.Role
 {
 	public class Novice : Character
 	{
-		public Novice(string name) : base(name, 20, 3)
+		public Novice(string name, int hp, int ap) : base(name, hp, ap)
 		{
 		}
 

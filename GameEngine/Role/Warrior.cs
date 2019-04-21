@@ -4,10 +4,8 @@ namespace GameEngine.Role
 {
 	public class Warrior : Character, IHero
 	{
-		public Warrior(string name) : base(name, 30, 8)
+		public Warrior(string name, int hp, int ap) : base(name, hp, ap)
 		{
-			HitPoint = 30;
-			AttackPoint = 8;
 		}
 
 		public override void Attack(Character enemy)
