@@ -14,8 +14,8 @@ namespace GameEngine.Role
 
 		public int AttackPoint { get; protected set; }
 		public int HitPoint { get; protected internal set; }
-		public string Job => this.GetType().ToString().Split('.').Last();
-		public int MaxHitPoint { get; set; }
+		public string JobTitle => this.GetType().ToString().Split('.').Last();
+		public int MaxHitPoint { get; }
 		public string Name { get; }
 
 		public virtual void Attack(Character enemy)

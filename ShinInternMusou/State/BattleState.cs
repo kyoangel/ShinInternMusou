@@ -58,7 +58,7 @@ namespace ShinInternMusou.State
 
 		private static void BattleOpening(UserInterface ui)
 		{
-			ui.PromptMessage($"Hi {ui.Hero.Job} {ui.Hero.Name}, there is a goblin");
+			ui.PromptMessage($"Hi {ui.Hero.JobTitle} {ui.Hero.Name}, there is a goblin");
 			ui.PromptMessage("Please defeat him");
 			Console.WriteLine();
 			ui.Enemy = CharacterFactory.CreateEnemy("Goblin");

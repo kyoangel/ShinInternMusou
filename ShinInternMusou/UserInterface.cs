@@ -29,7 +29,7 @@ namespace ShinInternMusou
 		public void BattleResult(Character character, Character enemy)
 		{
 			Console.WriteLine("");
-			Console.WriteLine($"{character.Job} {character.Name} 的血量 {character.HitPoint}" +
+			Console.WriteLine($"{character.JobTitle} {character.Name} 的血量 {character.HitPoint}" +
 							  $", {enemy.Name} 的血量 {enemy.HitPoint}");
 		}
 
