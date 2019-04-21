@@ -4,7 +4,7 @@
 	{
 		public override void InterAct(UserInterface ui)
 		{
-			string heroName = string.Empty;
+			var heroName = string.Empty;
 			ui.PromptMessage("Hi hero, welcome to SHIN INTERN MUSOU, please enter your name.");
 			while (string.IsNullOrEmpty(heroName))
 			{
@@ -15,7 +15,6 @@
 				}
 			}
 
-			ui.PromptMessage($"Hi {heroName}, please select your class");
 			ui.HeroName = heroName;
 
 			ui.State =  new ChooseJobState();

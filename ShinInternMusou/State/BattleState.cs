@@ -14,7 +14,7 @@ namespace ShinInternMusou.State
 				BattleOpening(ui);
 			}
 
-			ui.PromptMessage("type [Attack], [Skill] to fight, type [Run] for retreat");
+			ui.PromptMessage("Type [Attack], [Skill] to fight, [Run] for retreat");
 			Enum.TryParse(ui.ReceiveMessage(), true, out CombatAction action);
 			switch (action)
 			{
@@ -42,7 +42,7 @@ namespace ShinInternMusou.State
 
 				default:
 
-					ui.PromptMessage("Your Action is not valid.");
+					ui.PromptMessage("Your action is not valid.");
 					ui.PromptMessage("Type [Attack], [Skill] to fight, type [Run] for retreat");
 					break;
 			}

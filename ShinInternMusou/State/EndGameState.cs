@@ -4,15 +4,9 @@
 	{
 		public override void InterAct(UserInterface ui)
 		{
-			if (ui.Enemy.HitPoint <= 0)
-			{
-				ui.PromptMessage("You Win!");
-			}
-			else
-			{
-				ui.PromptMessage("You Lose!");
-			}
+			var message = ui.Enemy.HitPoint <= 0 ? "You Win!" : "You Lose!";
 
+			ui.PromptMessage(message);
 			ui.PromptMessage("Game Over, please input any key to exit.");
 		}
 	}

@@ -8,9 +8,10 @@ namespace ShinInternMusou.State
 	{
 		public override void InterAct(UserInterface ui)
 		{
+			ui.PromptMessage($"Hi {ui.HeroName}, please select your class");
 			ui.PromptMessage("Type [Novice], [Warrior], or [Priest] to create you character");
-			var classChoose = ui.ReceiveMessage();
 
+			var classChoose = ui.ReceiveMessage();
 			if (classChoose.Equals("Rename", StringComparison.OrdinalIgnoreCase))
 			{
 				ui.State = new StartState();
@@ -22,7 +23,7 @@ namespace ShinInternMusou.State
 			{
 				ui.Hero = CharacterFactory.CreateCharacter(ui.HeroName, heroClass);
 			}
-			catch (ArgumentOutOfRangeException e)
+			catch (ArgumentOutOfRangeException)
 			{
 				Console.WriteLine("The job you type is not valid");
 				return;
