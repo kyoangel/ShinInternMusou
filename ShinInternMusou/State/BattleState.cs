@@ -43,7 +43,6 @@ namespace ShinInternMusou.State
 				default:
 
 					ui.PromptMessage("Your action is not valid.");
-					ui.PromptMessage("Type [Attack], [Skill] to fight, type [Run] for retreat");
 					break;
 			}
 
