@@ -1,7 +1,7 @@
-﻿using System;
-using GameEngine;
+﻿using GameEngine;
 using GameEngine.Enum;
 using GameEngine.Role;
+using System;
 
 namespace ShinInternMusou.State
 {
@@ -9,52 +9,64 @@ namespace ShinInternMusou.State
 	{
 		public override void InterAct(UserInterface ui)
 		{
+			if (ui.Enemy == null)
+			{
+				BattleOpening(ui);
+			}
+
+			ui.PromptMessage("type [Attack], [Skill] to fight, type [Run] for retreat");
+			Enum.TryParse(ui.ReceiveMessage(), true, out CombatAction action);
+			switch (action)
+			{
+				case CombatAction.Run:
+					ui.PromptMessage("You Lose!");
+					break;
+
+				case CombatAction.Attack:
+					ui.Hero.Attack(ui.Enemy);
+					ui.Enemy.Attack(ui.Hero);
+					break;
+
+				case CombatAction.Skill:
+					if (ui.Hero is IHero hero)
+					{
+						hero.Skill(ui.Enemy);
+					}
+					else
+					{
+						ui.PromptMessage("You don't have skill");
+					}
+
+					ui.Enemy.Attack(ui.Hero);
+					break;
+
+				default:
+
+					ui.PromptMessage("Your Action is not valid.");
+					ui.PromptMessage("Type [Attack], [Skill] to fight, type [Run] for retreat");
+					break;
+			}
+
+			ui.BattleResult(ui.Hero, ui.Enemy);
+			Console.WriteLine();
+
+			if (HasResult(ui))
+			{
+				ui.State = new EndGameState();
+			}
+		}
+
+		private static void BattleOpening(UserInterface ui)
+		{
 			ui.PromptMessage($"Hi {ui.Hero.Job} {ui.Hero.Name}, there is a goblin");
 			ui.PromptMessage("Please defeat him");
 			Console.WriteLine();
-
 			ui.Enemy = CharacterFactory.CreateEnemy("Goblin");
-			while (ui.Hero.HitPoint > 0 && ui.Enemy.HitPoint > 0)
-			{
-				ui.PromptMessage("type [Attack], [Skill] to fight, type [Run] for retreat");
-				var combat = ui.ReceiveMessage();
-				Enum.TryParse(combat, true, out CombatAction action);
-				switch (action)
-				{
-					case CombatAction.Run:
-						ui.PromptMessage("You Lose!");
-						break;
+		}
 
-					case CombatAction.Attack:
-						ui.Hero.Attack(ui.Enemy);
-						ui.Enemy.Attack(ui.Hero);
-						break;
-
-					case CombatAction.Skill:
-						if (ui.Hero is IHero hero)
-						{
-							hero.Skill(ui.Enemy);
-						}
-						else
-						{
-							ui.PromptMessage("You don't have skill");
-						}
-
-						ui.Enemy.Attack(ui.Hero);
-						break;
-
-					default:
-
-						ui.PromptMessage("Your Action is not valid.");
-						ui.PromptMessage("Type [Attack], [Skill] to fight, type [Run] for retreat");
-						break;
-				}
-
-				ui.BattleResult(ui.Hero, ui.Enemy);
-				Console.WriteLine();
-			}
-
-			ui.State = new EndGameState();
+		private static bool HasResult(UserInterface ui)
+		{
+			return ui.Hero.HitPoint <= 0 || ui.Enemy.HitPoint <= 0;
 		}
 	}
 }
