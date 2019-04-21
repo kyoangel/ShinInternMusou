@@ -8,7 +8,7 @@ namespace GameEngine
 	{
 		public static Character CreateCharacter(string heroName, HeroClass heroClass)
 		{
-			Role.Character character = null;
+			Character character = null;
 			switch (heroClass)
 			{
 				case HeroClass.Novice:
