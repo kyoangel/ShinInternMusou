@@ -31,9 +31,9 @@ namespace ShinInternMusou.State
 						break;
 
 					case CombatAction.Skill:
-						if (ui.Hero is IHero)
+						if (ui.Hero is IHero hero)
 						{
-							(ui.Hero as IHero).Skill(ui.Enemy);
+							hero.Skill(ui.Enemy);
 						}
 						else
 						{
