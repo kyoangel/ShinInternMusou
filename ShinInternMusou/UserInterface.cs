@@ -20,17 +20,15 @@ namespace ShinInternMusou
 
 		public PlayerState State
 		{
-			get { return _state; }
-			set
-			{
-				_state = value;
-			}
+			get => _state;
+			set => _state = value;
 		}
 
 		public Character Enemy { get; set; }
 
 		public void BattleResult(Character character, Character enemy)
 		{
+			Console.WriteLine("");
 			Console.WriteLine($"{character.Job} {character.Name} 的血量 {character.HitPoint}" +
 							  $", {enemy.Name} 的血量 {enemy.HitPoint}");
 		}
